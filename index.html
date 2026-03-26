@@ -2,61 +2,216 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>潘洋 ❤️ 王子微 婚礼请柬</title>
 
-  <!-- 微信/社交分享卡片 Meta -->
+  <!-- ===== 微信/社交分享卡片核心标签 ===== -->
+  <meta name="description" content="2026年5月4日，我们结婚啦！诚挚邀请您见证我们的幸福。" />
+
+  <!-- Open Graph（微信、微博、QQ等平台识别） -->
   <meta property="og:title" content="潘洋 ❤️ 王子微 婚礼请柬" />
   <meta property="og:description" content="2026年5月4日，我们结婚啦！诚挚邀请您见证我们的幸福。" />
   <meta property="og:image" content="https://ending00.github.io/wedding-deploy/cover.png" />
+  <meta property="og:image:width" content="800" />
+  <meta property="og:image:height" content="800" />
   <meta property="og:url" content="https://ending00.github.io/wedding-deploy/" />
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="潘洋 & 王子微 婚礼" />
 
-  <!-- 立即跳转到请柬页面 -->
-  <meta http-equiv="refresh" content="0; url=wedding_invitation_final.html">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="潘洋 ❤️ 王子微 婚礼请柬" />
+  <meta name="twitter:description" content="2026年5月4日，我们结婚啦！诚挚邀请您见证我们的幸福。" />
+  <meta name="twitter:image" content="https://ending00.github.io/wedding-deploy/cover.png" />
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      background: #1a0a00;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      background: linear-gradient(160deg, #1a0800 0%, #2d1200 50%, #1a0800 100%);
       min-height: 100vh;
-      font-family: serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Noto Serif SC', 'STSong', Georgia, serif;
+      overflow: hidden;
     }
-    .loading {
+
+    /* 背景花瓣 */
+    .petal {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background: radial-gradient(circle, #C9A96E, #a07840);
+      border-radius: 50% 0 50% 0;
+      animation: fall linear infinite;
+      opacity: 0;
+    }
+    @keyframes fall {
+      0%   { transform: translateY(-20px) rotate(0deg);   opacity: 0; }
+      10%  { opacity: 0.7; }
+      90%  { opacity: 0.5; }
+      100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    }
+
+    /* 主卡片容器 */
+    .card {
+      width: 90%;
+      max-width: 380px;
+      background: linear-gradient(180deg, rgba(30,12,2,0.95) 0%, rgba(20,8,0,0.98) 100%);
+      border: 1px solid #7a5a2a;
+      border-radius: 4px;
+      padding: 40px 30px 36px;
       text-align: center;
+      position: relative;
+      box-shadow: 0 0 40px rgba(180,130,60,0.15), inset 0 0 60px rgba(0,0,0,0.4);
+      animation: fadeIn 1s ease both;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 四角装饰 */
+    .card::before, .card::after,
+    .card-inner::before, .card-inner::after {
+      content: '✦';
+      position: absolute;
       color: #C9A96E;
+      font-size: 14px;
+      opacity: 0.8;
     }
-    .loading h1 {
+    .card::before  { top: 10px;  left:  12px; }
+    .card::after   { top: 10px;  right: 12px; }
+    .card-inner::before { bottom: 10px; left:  12px; }
+    .card-inner::after  { bottom: 10px; right: 12px; }
+
+    /* 横线装饰 */
+    .deco-line {
+      width: 60%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #C9A96E, transparent);
+      margin: 14px auto;
+    }
+
+    .eyebrow {
+      color: #a07840;
+      font-size: 11px;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .names {
+      color: #C9A96E;
       font-size: 2rem;
-      margin-bottom: 12px;
+      letter-spacing: 8px;
+      font-weight: 400;
+      line-height: 1.3;
+      text-shadow: 0 0 20px rgba(201,169,110,0.4);
+    }
+
+    .amp {
+      color: #e8c87a;
+      font-size: 1.5rem;
+      display: block;
+      margin: 4px 0;
+    }
+
+    .date-text {
+      color: #d4af70;
+      font-size: 0.95rem;
+      letter-spacing: 3px;
+      margin: 4px 0 6px;
+    }
+
+    .sub-text {
+      color: #8a6535;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      margin-bottom: 28px;
+    }
+
+    /* 封面图 */
+    .cover-img {
+      width: 100%;
+      max-width: 260px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 2px;
+      border: 1px solid #5a3e18;
+      display: block;
+      margin: 0 auto 24px;
+      opacity: 0.9;
+    }
+
+    /* 按钮 */
+    .btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #b8892a, #C9A96E, #b8892a);
+      color: #1a0800;
+      font-size: 0.95rem;
+      font-weight: bold;
       letter-spacing: 4px;
+      padding: 13px 36px;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(180,130,60,0.35);
+      transition: all 0.3s;
+      font-family: inherit;
+      margin-top: 8px;
     }
-    .loading p {
-      font-size: 1rem;
-      color: #a88050;
+    .btn:active {
+      transform: scale(0.97);
+      box-shadow: 0 2px 8px rgba(180,130,60,0.2);
     }
-    .dots::after {
-      content: '...';
-      animation: dots 1.5s steps(3, end) infinite;
-    }
-    @keyframes dots {
-      0%, 33% { content: '.'; }
-      66% { content: '..'; }
-      100% { content: '...'; }
+
+    .footer-tip {
+      color: #5a3e18;
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-  <div class="loading">
-    <h1>潘洋 ❤️ 王子微</h1>
-    <p>正在打开婚礼请柬<span class="dots"></span></p>
-  </div>
+
+  <!-- 飘落花瓣 -->
   <script>
-    // 立即跳转
-    window.location.replace('wedding_invitation_final.html');
+    for (var i = 0; i < 12; i++) {
+      var p = document.createElement('div');
+      p.className = 'petal';
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.width = p.style.height = (5 + Math.random() * 7) + 'px';
+      p.style.animationDuration = (6 + Math.random() * 8) + 's';
+      p.style.animationDelay = (Math.random() * 8) + 's';
+      document.body.appendChild(p);
+    }
   </script>
+
+  <div class="card">
+    <div class="card-inner">
+      <div class="eyebrow">Wedding Invitation</div>
+
+      <img class="cover-img" src="https://ending00.github.io/wedding-deploy/cover.png" alt="婚礼封面" onerror="this.style.display='none'" />
+
+      <div class="names">潘 洋</div>
+      <div class="amp">♥</div>
+      <div class="names">王子微</div>
+
+      <div class="deco-line"></div>
+
+      <div class="date-text">2026 · 05 · 04</div>
+      <div class="sub-text">星期一 · 午时 · 诚邀您的见证</div>
+
+      <a class="btn" href="wedding_invitation_final.html">开启请柬</a>
+
+      <div class="footer-tip">点击进入婚礼请柬</div>
+    </div>
+  </div>
+
 </body>
 </html>
