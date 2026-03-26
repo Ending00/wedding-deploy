@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>潘洋 ❤️ 王子微 婚礼请柬</title>
+  <meta name="description" content="潘洋 ❤️ 王子微，2026年5月4日，诚挚邀请您见证我们的幸福。" />
+  <!-- 微信分享卡片 -->
+  <meta property="og:title" content="潘洋 ❤️ 王子微 婚礼请柬" />
+  <meta property="og:description" content="2026年5月4日，我们结婚啦！诚挚邀请您见证我们的幸福。" />
+  <meta property="og:type" content="website" />
+  <!-- 封面图 -->
+  <meta property="og:image" content="cover.png" />
+  <meta property="og:url" content="" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #C9A96E;
+      --gold-light: #E8D5A3;
+      --dark: #2C2C2C;
+      --text: #555;
+      --bg: #FDFAF5;
+      --cream: #F5EFE6;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.8;
+    }
+
+    .deco-line {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto;
+    }
+    .deco-line-short {
+      width: 30px;
+      height: 1px;
+      background: var(--gold-light);
+      margin: 0 auto;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.06); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    @keyframes petalFall {
+      0%   { opacity: 0; transform: translateY(0) rotate(0deg) translateX(0); }
+      10%  { opacity: 0.7; }
+      90%  { opacity: 0.4; }
+      100% { opacity: 0; transform: translateY(110vh) rotate(720deg) translateX(80px); }
+    }
+
+    .petal {
+      position: fixed;
+      top: -20px;
+      width: 10px;
+      height: 10px;
+      background: var(--gold-light);
+      border-radius: 50% 0 50% 50%;
+      pointer-events: none;
+      z-index: 10;
+      animation: petalFall linear infinite;
+    }
+
+    /* ===== 封面 ===== */
+    #cover {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+    #cover.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .cover-inner {
+      text-align: center;
+      animation: fadeUp 1s ease both;
+    }
+    .cover-cover-text {
+      font-size: 12px;
+      letter-spacing: 6px;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .cover-names {
+      font-size: 32px;
+      color: var(--dark);
+      letter-spacing: 4px;
+      margin-bottom: 8px;
+      font-weight: 300;
+    }
+    .cover-amp {
+      font-size: 20px;
+      color: var(--gold);
+      display: block;
+      margin: 10px 0;
+    }
+    .cover-date {
+      font-size: 14px;
+      letter-spacing: 5px;
+      color: var(--gold);
+      margin-top: 16px;
+    }
+    .cover-btn {
+      margin-top: 40px;
+      padding: 13px 44px;
+      border: 1px solid var(--gold);
+      background: transparent;
+      color: var(--gold);
+      font-family: inherit;
+      font-size: 13px;
+      letter-spacing: 4px;
+      cursor: pointer;
+      transition: all 0.35s ease;
+      animation: fadeIn 1.2s 0.5s both;
+    }
+    .cover-btn:hover {
+      background: var(--gold);
+      color: #fff;
+    }
+
+    /* ===== 主内容 ===== */
+    #main {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    #main.show {
+      opacity: 1;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 24px;
+      text-align: center;
+    }
+
+    /* Hero */
+    .hero { background: var(--bg); }
+    .hero-eyebrow {
+      font-size: 12px;
+      letter-spacing: 6px;
+      color: var(--gold);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+    .hero-chapter {
+      font-size: 48px;
+      color: var(--dark);
+      letter-spacing: 8px;
+      font-weight: 300;
+    }
+    .hero-amp {
+      font-size: 24px;
+      color: var(--gold);
+      display: block;
+      margin: 10px 0 14px;
+    }
+    .hero-date {
+      font-size: 14px;
+      letter-spacing: 5px;
+      color: var(--gold);
+      margin-top: 20px;
+    }
+
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 48px;
+      color: var(--gold);
+    }
+    .section-divider .line {
+      width: 50px;
+      height: 1px;
+      background: var(--gold-light);
+    }
+
+    /* 关于我们 */
+    .about { background: var(--cream); }
+    .about-title {
+      font-size: 26px;
+      color: var(--dark);
+      letter-spacing: 4px;
+      margin-bottom: 6px;
+      font-weight: 300;
+    }
+    .about-sub {
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      margin-bottom: 40px;
+    }
+    .couple-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .couple-item {
+      text-align: center;
+      flex: 1;
+      min-width: 140px;
+      max-width: 240px;
+    }
+    .couple-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 16px;
+      border: 3px solid var(--gold-light);
+      box-shadow: 0 4px 20px rgba(201,169,110,0.2);
+      animation: pulse 4s ease infinite;
+    }
+    .couple-avatar-2 { animation-delay: 2s; }
+    .couple-name {
+      font-size: 24px;
+      color: var(--dark);
+      letter-spacing: 3px;
+      margin-bottom: 4px;
+      font-weight: 300;
+    }
+    .couple-role {
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: var(--gold);
+    }
+    .couple-heart {
+      font-size: 26px;
+      color: var(--gold);
+      animation: float 3s ease infinite;
+    }
+
+    /* 倒计时 */
+    .countdown-section {
+      background: var(--dark);
+      color: #fff;
+    }
+    .countdown-title {
+      font-size: 12px;
+      letter-spacing: 6px;
+      color: var(--gold-light);
+      margin-bottom: 8px;
+    }
+    .countdown-main {
+      font-size: 26px;
+      color: var(--gold);
+      margin-bottom: 36px;
+      letter-spacing: 4px;
+    }
+    .countdown-grid {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .countdown-item {
+      text-align: center;
+      min-width: 72px;
+    }
+    .countdown-num {
+      font-size: 44px;
+      color: var(--gold);
+      line-height: 1;
+      display: block;
+    }
+    .countdown-label {
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: rgba(255,255,255,0.45);
+      margin-top: 8px;
+      display: block;
+    }
+
+    /* 时间地点 */
+    .info-section { background: var(--bg); }
+    .info-title {
+      font-size: 26px;
+      color: var(--dark);
+      letter-spacing: 4px;
+      margin-bottom: 6px;
+      font-weight: 300;
+    }
+    .info-sub {
+      font-size: 12px;
+      letter-spacing: 4px;
+      color: var(--gold);
+      margin-bottom: 40px;
+    }
+    .info-block {
+      margin-bottom: 32px;
+    }
+    .info-block-title {
+      font-size: 18px;
+      color: var(--dark);
+      margin-bottom: 8px;
+      letter-spacing: 3px;
+    }
+    .info-block-detail {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 2;
+      letter-spacing: 1px;
+    }
+    .info-block-detail span {
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    /* 祝词 */
+    .blessing-section {
+      background: var(--cream);
+      min-height: auto;
+      padding: 100px 24px;
+    }
+    .blessing-title {
+      font-size: 26px;
+      color: var(--dark);
+      letter-spacing: 4px;
+      margin-bottom: 6px;
+      font-weight: 300;
+    }
+    .blessing-quote {
+      font-style: italic;
+      font-size: 14px;
+      color: var(--gold);
+      margin-bottom: 36px;
+      letter-spacing: 1px;
+    }
+    .blessing-poem {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 2.2;
+      letter-spacing: 1px;
+      max-width: 560px;
+    }
+
+    /* 出席确认 */
+    .rsvp-section { background: var(--bg); }
+    .rsvp-title {
+      font-size: 26px;
+      color: var(--dark);
+      letter-spacing: 4px;
+      margin-bottom: 6px;
+      font-weight: 300;
+    }
+    .rsvp-sub {
+      font-size: 12px;
+      letter-spacing: 4px;
+      color: var(--gold);
+      margin-bottom: 40px;
+    }
+    .rsvp-form {
+      width: 100%;
+      max-width: 480px;
+    }
+    .form-row {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+    .form-group {
+      flex: 1;
+      min-width: 180px;
+      text-align: left;
+    }
+    .form-label {
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 7px;
+    }
+    .form-input {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid var(--gold-light);
+      background: transparent;
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--dark);
+      outline: none;
+      transition: border-color 0.3s;
+      border-radius: 0;
+      -webkit-appearance: none;
+    }
+    .form-input:focus { border-color: var(--gold); }
+    .form-input::placeholder { color: #bbb; }
+    .form-select {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid var(--gold-light);
+      background: var(--bg);
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--dark);
+      outline: none;
+      cursor: pointer;
+      border-radius: 0;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23C9A96E' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+    }
+    .form-select:focus { border-color: var(--gold); }
+    .form-submit {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      border: 1px solid var(--gold);
+      background: var(--gold);
+      color: #fff;
+      font-family: inherit;
+      font-size: 13px;
+      letter-spacing: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+    .form-submit:hover {
+      background: var(--dark);
+      border-color: var(--dark);
+    }
+
+    /* 页脚 */
+    .footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      padding: 44px 24px;
+      font-size: 12px;
+      letter-spacing: 3px;
+    }
+    .footer-names {
+      font-size: 20px;
+      color: var(--gold);
+      margin-bottom: 10px;
+      letter-spacing: 4px;
+    }
+
+    /* 音乐按钮 */
+    #musicToggle {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      z-index: 999;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--dark);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 17px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+    #musicToggle:hover {
+      background: var(--gold);
+      color: #fff;
+    }
+
+    /* 渐入动画 */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 600px) {
+      .hero-chapter { font-size: 36px; letter-spacing: 4px; }
+      .cover-names { font-size: 26px; }
+      .couple-avatar { width: 88px; height: 88px; }
+      .countdown-num { font-size: 36px; }
+      .couple-row { gap: 16px; }
+      .countdown-grid { gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  // 飘落花瓣
+  (function() {
+    var count = window.innerWidth < 600 ? 10 : 16;
+    for (var i = 0; i < count; i++) {
+      var p = document.createElement('div');
+      p.className = 'petal';
+      p.style.left = (Math.random() * 100) + 'vw';
+      p.style.animationDuration = (Math.random() * 6 + 6) + 's';
+      p.style.animationDelay = (Math.random() * 8) + 's';
+      var size = Math.random() * 7 + 5;
+      p.style.width = size + 'px';
+      p.style.height = size + 'px';
+      p.style.opacity = Math.random() * 0.4 + 0.2;
+      document.body.appendChild(p);
+    }
+  })();
+</script>
+
+<!-- 封面 -->
+<div id="cover">
+  <div class="cover-inner">
+    <div class="cover-cover-text">诚挚邀请您见证我们的幸福</div>
+    <div class="cover-names">潘 洋</div>
+    <span class="cover-amp">&</span>
+    <div class="cover-names">王 子 微</div>
+    <div class="cover-date">2026 · 05 · 04</div>
+    <button class="cover-btn" onclick="openInvite()">打开请柬</button>
+    <div id="musicHint" style="display:none; font-size:11px; color:#C9A96E; letter-spacing:2px; margin-top:16px; opacity:0.7;">点击任意处开启音乐 ♪</div>
+  </div>
+</div>
+
+<!-- 主内容 -->
+<div id="main">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="fade-up">
+      <div class="hero-eyebrow">Save the Date</div>
+      <div class="hero-chapter">潘 洋</div>
+      <span class="hero-amp">&</span>
+      <div class="hero-chapter">王子微</div>
+      <div class="deco-line" style="margin: 20px auto;"></div>
+      <div class="hero-date">2026 年 5 月 4 日 · 星期一 · 午时</div>
+    </div>
+  </section>
+
+  <!-- 关于我们 -->
+  <section class="about">
+    <div class="fade-up">
+      <div class="about-title">关于新人</div>
+      <div class="about-sub">The Couple</div>
+      <div class="deco-line-short" style="margin-bottom: 36px;"></div>
+      <div class="couple-row">
+        <div class="couple-item">
+          <img class="couple-avatar" src="新郎.png" alt="新郎潘洋" />
+          <div class="couple-name">潘 洋</div>
+          <div class="couple-role">新郎</div>
+        </div>
+        <div class="couple-heart">♥</div>
+        <div class="couple-item">
+          <img class="couple-avatar couple-avatar-2" src="新娘.png" alt="新娘王子微" />
+          <div class="couple-name">王子微</div>
+          <div class="couple-role">新娘</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 倒计时 -->
+  <section class="countdown-section">
+    <div class="fade-up">
+      <div class="countdown-title">COUNTDOWN</div>
+      <div class="countdown-main">距离婚礼还有</div>
+      <div class="countdown-grid">
+        <div class="countdown-item">
+          <span class="countdown-num" id="cd-days">--</span>
+          <span class="countdown-label">天</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-num" id="cd-hours">--</span>
+          <span class="countdown-label">时</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-num" id="cd-minutes">--</span>
+          <span class="countdown-label">分</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-num" id="cd-seconds">--</span>
+          <span class="countdown-label">秒</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 时间地点 -->
+  <section class="info-section">
+    <div class="fade-up">
+      <div class="info-title">婚礼信息</div>
+      <div class="info-sub">Wedding Information</div>
+      <div class="deco-line" style="margin-bottom: 36px;"></div>
+
+      <div class="info-block">
+        <div class="info-block-title">婚礼时间</div>
+        <div class="info-block-detail">
+          2026年5月4日（星期一）<br/>
+          <span>11:30 宾客签到 · 12:00 仪式开始</span>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block-title">婚礼地点</div>
+        <div class="info-block-detail">
+          <span>具体地点请实时联系我们确认</span><br/>
+          为确保婚礼顺利进行<br/>
+          请提前与我们联系获取详细地址
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block-title">联系方式</div>
+        <div class="info-block-detail">
+          <span>如有疑问，请随时联系我们</span><br/>
+          联系电话：177-6421-8580<br/>
+          请提前与我们确认出席意向
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 祝词 -->
+  <section class="blessing-section">
+    <div class="fade-up">
+      <div class="blessing-title">白首之约</div>
+      <div class="blessing-quote">" In love and in life, we choose each other. "</div>
+      <div class="deco-line-short" style="margin-bottom: 28px;"></div>
+      <div class="blessing-poem">
+        喜今日赤绳系定，珠联璧合；<br/>
+        卜他年白头永携，桂馥兰馨。<br/><br/>
+        从相遇到相守，感谢你出现在我的生命里。<br/>
+        愿往后余生，风雨同舟，携手白头。
+      </div>
+    </div>
+  </section>
+
+  <!-- 出席确认 -->
+  <section class="rsvp-section">
+    <div class="fade-up">
+      <div class="rsvp-title">出席确认</div>
+      <div class="rsvp-sub">RSVP</div>
+      <div class="deco-line" style="margin-bottom: 36px;"></div>
+
+      <form class="rsvp-form" onsubmit="handleRSVP(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">您的姓名</label>
+            <input class="form-input" type="text" placeholder="请输入姓名" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">联系方式</label>
+            <input class="form-input" type="tel" placeholder="手机号码" />
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom: 18px;">
+          <label class="form-label">出席人数</label>
+          <select class="form-select">
+            <option value="1">1人</option>
+            <option value="2" selected>2人</option>
+            <option value="3">3人</option>
+            <option value="4">4人</option>
+            <option value="5">5人及以上</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin-bottom: 18px;">
+          <label class="form-label">是否出席</label>
+          <select class="form-select">
+            <option value="yes" selected>欣然出席</option>
+            <option value="maybe">可能出席</option>
+            <option value="no">遗憾缺席</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">送上祝福（选填）</label>
+          <input class="form-input" type="text" placeholder="写下您的祝福..." />
+        </div>
+        <button class="form-submit" type="submit">确认回复</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <div class="footer">
+  <div class="footer-names">潘洋 & 王子微</div>
+  <div>2026.05.04</div>
+    <div style="margin-top: 10px;">期待与您相见</div>
+  </div>
+
+</div><!-- end #main -->
+
+<!-- 音乐按钮 -->
+<button id="musicToggle" onclick="toggleMusic()" title="音乐开关">♪</button>
+
+<audio id="bgMusic" loop src="11.mp3"></audio>
+
+<script>
+  var musicStarted = false;
+  function openInvite() {
+    document.getElementById('cover').classList.add('hidden');
+    document.getElementById('main').classList.add('show');
+    document.getElementById('musicHint').style.display = 'block';
+    initScrollReveal();
+    initCountdown();
+    // 尝试自动播放，如被拦截则提示用户点击
+    var music = document.getElementById('bgMusic');
+    if (music.src) {
+      music.play().then(function() {
+        document.getElementById('musicToggle').textContent = '♫';
+        musicOn = true;
+        document.getElementById('musicHint').style.display = 'none';
+        musicStarted = true;
+      }).catch(function() {
+        // 被拦截，等待用户点击页面触发
+      });
+    }
+    // 用户点击页面任意处 → 播放音乐
+    document.addEventListener('click', startMusicOnce, { once: true });
+    document.addEventListener('touchstart', startMusicOnce, { once: true });
+  }
+  function startMusicOnce() {
+    if (musicStarted) return;
+    var music = document.getElementById('bgMusic');
+    if (music.src) {
+      music.play().then(function() {
+        document.getElementById('musicToggle').textContent = '♫';
+        musicOn = true;
+        musicStarted = true;
+        var hint = document.getElementById('musicHint');
+        if (hint) hint.style.display = 'none';
+      }).catch(function() {});
+    }
+  }
+
+  function initScrollReveal() {
+    var els = document.querySelectorAll('.fade-up');
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(function(el) { io.observe(el); });
+  }
+
+  function initCountdown() {
+    // 设置婚礼时间为2026年5月4日 12:00
+    var target = new Date('2026-05-04T12:00:00').getTime();
+    function update() {
+      var diff = target - Date.now();
+      if (diff <= 0) {
+        document.getElementById('cd-days').textContent = '0';
+        document.getElementById('cd-hours').textContent = '0';
+        document.getElementById('cd-minutes').textContent = '0';
+        document.getElementById('cd-seconds').textContent = '0';
+        return;
+      }
+      document.getElementById('cd-days').textContent    = Math.floor(diff / 86400000);
+      document.getElementById('cd-hours').textContent   = Math.floor((diff % 86400000) / 3600000);
+      document.getElementById('cd-minutes').textContent = Math.floor((diff % 3600000) / 60000);
+      document.getElementById('cd-seconds').textContent = Math.floor((diff % 60000) / 1000);
+    }
+    update();
+    setInterval(update, 1000);
+  }
+
+  var musicOn = false;
+  function toggleMusic() {
+    var music = document.getElementById('bgMusic');
+    var btn = document.getElementById('musicToggle');
+    if (!music.src) {
+      btn.style.color = '#888';
+      return;
+    }
+    if (musicOn) {
+      music.pause();
+      btn.textContent = '♪';
+      musicOn = false;
+    } else {
+      music.play().catch(function() {});
+      btn.textContent = '♫';
+      musicOn = true;
+    }
+  }
+
+  function handleRSVP(e) {
+    e.preventDefault();
+    var btn = e.target.querySelector('.form-submit');
+    btn.textContent = '已回复，感谢您！';
+    btn.style.background = '#8B7355';
+    btn.style.borderColor = '#8B7355';
+    btn.disabled = true;
+    setTimeout(function() {
+      btn.textContent = '确认回复';
+      btn.style.background = '';
+      btn.style.borderColor = '';
+      btn.disabled = false;
+      e.target.reset();
+    }, 3000);
+  }
+</script>
+
+</body>
+</html>
