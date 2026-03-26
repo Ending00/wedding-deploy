@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>潘洋 ❤️ 王子微 婚礼请柬</title>
+
+  <!-- 微信/社交分享卡片 Meta -->
+  <meta property="og:title" content="潘洋 ❤️ 王子微 婚礼请柬" />
+  <meta property="og:description" content="2026年5月4日，我们结婚啦！诚挚邀请您见证我们的幸福。" />
+  <meta property="og:image" content="https://ending00.github.io/wedding-deploy/cover.png" />
+  <meta property="og:url" content="https://ending00.github.io/wedding-deploy/" />
+  <meta property="og:type" content="website" />
+
+  <!-- 立即跳转到请柬页面 -->
+  <meta http-equiv="refresh" content="0; url=wedding_invitation_final.html">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #1a0a00;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: serif;
+    }
+    .loading {
+      text-align: center;
+      color: #C9A96E;
+    }
+    .loading h1 {
+      font-size: 2rem;
+      margin-bottom: 12px;
+      letter-spacing: 4px;
+    }
+    .loading p {
+      font-size: 1rem;
+      color: #a88050;
+    }
+    .dots::after {
+      content: '...';
+      animation: dots 1.5s steps(3, end) infinite;
+    }
+    @keyframes dots {
+      0%, 33% { content: '.'; }
+      66% { content: '..'; }
+      100% { content: '...'; }
+    }
+  </style>
+</head>
+<body>
+  <div class="loading">
+    <h1>潘洋 ❤️ 王子微</h1>
+    <p>正在打开婚礼请柬<span class="dots"></span></p>
+  </div>
+  <script>
+    // 立即跳转
+    window.location.replace('wedding_invitation_final.html');
+  </script>
+</body>
+</html>
